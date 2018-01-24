@@ -1,9 +1,17 @@
+// create variable output as multiD array with 3 empty arrays
+// loop through arr
+  // if value at index is cleanly divisible by 3
+    // then push the value to output [2]
+    // else if the value at index is cleanly divisible by 2
+      // then push the value to output [0]
+      // else push the rest to output[1]
+// return the output array
+
+
+
 function mengelompokkanAngka(arr) {
-  // create variable output as multiD array with 3 empty arrays
   var output = [ [], [], [] ];
-  // loop through arr
   for (var index=0; index<arr.length; index++){
-    // if value at index is cleanly divisible by 3
     if (arr[index] %  3 === 0) {
       output[2].push(arr[index]);
     } else {

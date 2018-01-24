@@ -1,49 +1,69 @@
+// create var 'productSales' obj to contain purchase info
+// create var 'ouput' array to be filled with productSales
+
+// loop through listBarang[0] (item name)
+  // reset productSales (with properties with 0 or temporary value) and bought
+    // shoppers[index].product , current 'product' as property
+    // list containing buying shoppers as property
+    // item stock, leftOver as property
+    // total sold totalProfit as property
+    // var 'bought' how many items are bought
+
+    // set product name and stock
+      // set product property as the item name, current product
+      // set leftOver property as base stock of current items
+    // loop through shoppers
+      // if current shoppers is buying product
+      // insert shopper name into productSales.shoppers
+
+      // current product stock - buy amount... determine 'bought'
+      // if buy amount >= stock,
+        // set stock to 0 and bought to buy amount - stock
+      // else set bought to buy amount and reduce stock with buy amount
+    // all shoppers bought / didn't buy the current item
+
+    // determine totalProfit with bought and price
+    // productSales is filled, dump into output
+// return output
+
+
+
 function countProfit(shoppers) {
   let listBarang = [ ['Sepatu Stacattu', 1500000, 10],
                      ['Baju Zoro', 500000, 2],
                      ['Sweater Uniklooh', 175000, 1]
                    ];
 
-  // you can only write your code here!
-  var productSales = {}; // to contain purchase info
-  var output = []; // to be filled with productSales
 
-  // loop through listBarang[0] (item name)
+  var productSales = {};
+  var output = [];
+
   for (var barang=0; barang<listBarang.length; barang++){
-    // reset productSales (with properties with 0 or temporary value) and bought
     productSales = {};
-    productSales.product = 'nothing'; // shoppers[index].product , current product
-    productSales.shoppers = []; // list containing buying shoppers
-    productSales.leftOver = '0'; // item stock
-    productSales.totalProfit = '0'; // total sold
-    var bought = 0; // how many items are bought
+    productSales.product = 'nothing';
+    productSales.shoppers = [];
+    productSales.leftOver = '0';
+    productSales.totalProfit = '0';
+    var bought = 0;
 
-    // set product name and stock
-    productSales.product = listBarang[barang][0]; // 0, sepatu stacattu, current product
-    productSales.leftOver = listBarang[barang][2]; // base stock of current items
+    productSales.product = listBarang[barang][0];
+    productSales.leftOver = listBarang[barang][2];
 
-    // loop through shoppers
     for (var shopIndex = 0; shopIndex < shoppers.length; shopIndex++) {
-
-      if (shoppers[shopIndex].product === productSales.product){ // current shoppers is buying product
-        // insert shopper name into productSales.shoppers
+      if (shoppers[shopIndex].product === productSales.product){
         productSales.shoppers.push(shoppers[shopIndex].name);
 
-        // current product stock - buy amount... determine 'bought'
-        // if buy amount >= stock, set stock to 0 and bought to buy amount - stock
         if (shoppers[shopIndex].amount >= productSales.leftOver){
           bought += (shoppers[shopIndex].amount - productSales.leftOver);
           productSales.leftOver = 0;
-        } else { // else set bought to buy amount and reduce stock with buy amount
+        } else {
           bought += shoppers[shopIndex].amount;
           productSales.leftOver = productSales.leftOver - shoppers[shopIndex].amount;
         }
       }
-    } // all shoppers bought / didn't buy the current item
-    // determine totalProfit with bought and price
-    productSales.totalProfit = bought * listBarang[barang][1];
+    }
 
-    // productSales is filled, dump into output
+    productSales.totalProfit = bought * listBarang[barang][1];
     output.push(productSales);
   }
   return output;

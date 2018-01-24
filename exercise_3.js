@@ -1,5 +1,22 @@
+// create a var 'itemList' array to contain the predefined item and price, sorted by price from high to low
+// contain the 'costumer data' as an obj
+  // with property memberId set to input 'memberId',
+  // property money to input 'money',
+  // property listPurchased as an empty array,
+  // property changeMoney to input 'money'
+// check member id if it contains a falsy value
+  // return 'Mohon maaf, toko X hanya berlaku untuk member saja'
+  // else it has value
+  // check money if smaller than 50000
+    // return 'Mohon maaf, uang tidak cukup' when smaller than 50000
+    // else start buying
+    // loop through itemList => price from index 0 (money check)
+      // if money >= current price, then buy the current item
+        // count remaining money
+        // add the current item to purchased list
+// return the constumer data
+
 function shoppingTime(memberId, money) {
-  // you can only write your code here!
   var itemList =  [ {item:'Stacattu', price: 1500000},
                     {item:'Baju Zoro', price: 500000},
                     {item:'Baju H&N', price: 250000},
@@ -8,7 +25,6 @@ function shoppingTime(memberId, money) {
                   ];
   // console.log(itemList);
 
-  // contain the costumer data
   var costumerData =  {
                         memberId : memberId,
                         money : money,
@@ -17,23 +33,15 @@ function shoppingTime(memberId, money) {
                       }
   // console.log(costumerData);
 
-  // check member id if it does contain ID
   if (!memberId){
     return 'Mohon maaf, toko X hanya berlaku untuk member saja';
   } else {
-    // check money if smaller than 50000
     if (money < 50000){
       return 'Mohon maaf, uang tidak cukup';
     } else {
-      // start buying
-      // money check
-      // loop through itemList => price from index 0
       for (var i = 0; i < itemList.length; i++) {
-        // if money >= current price, then buy the current item
         if(money >= itemList[i].price){
-          // count remaining money
           costumerData.changeMoney -= itemList[i].price;
-          // add the current item to purchased list
           costumerData.listPurchased.push(itemList[i].item);
         }
       }
