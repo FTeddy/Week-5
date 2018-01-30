@@ -49,17 +49,11 @@ function countProfit(shoppers) {
 
     for (var shopIndex = 0; shopIndex < shoppers.length; shopIndex++) {
       if (shoppers[shopIndex].product === productSales.product){
-
-
         if (shoppers[shopIndex].amount <= productSales.leftOver){
           // buying
           productSales.shoppers.push(shoppers[shopIndex].name); // buyer name
           bought += shoppers[shopIndex].amount;
           productSales.leftOver = productSales.leftOver - shoppers[shopIndex].amount;
-          // bought += (shoppers[shopIndex].amount - productSales.leftOver);
-          // productSales.leftOver = 0;
-        } else {
-
         }
       }
     }
