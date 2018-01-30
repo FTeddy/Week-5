@@ -14,12 +14,10 @@
       // set leftOver property as base stock of current items
     // loop through shoppers
       // if current shoppers is buying product
-      // insert shopper name into productSales.shoppers
-
       // current product stock - buy amount... determine 'bought'
-      // if buy amount >= stock,
-        // set stock to 0 and bought to buy amount - stock
-      // else set bought to buy amount and reduce stock with buy amount
+      // if buy amount <= stock,
+        // insert shopper name into productSales.shoppers
+        // set bought to buy amount and reduce stock with buy amount
     // all shoppers bought / didn't buy the current item
 
     // determine totalProfit with bought and price
@@ -51,14 +49,17 @@ function countProfit(shoppers) {
 
     for (var shopIndex = 0; shopIndex < shoppers.length; shopIndex++) {
       if (shoppers[shopIndex].product === productSales.product){
-        productSales.shoppers.push(shoppers[shopIndex].name);
 
-        if (shoppers[shopIndex].amount >= productSales.leftOver){
-          bought += (shoppers[shopIndex].amount - productSales.leftOver);
-          productSales.leftOver = 0;
-        } else {
+
+        if (shoppers[shopIndex].amount <= productSales.leftOver){
+          // buying
+          productSales.shoppers.push(shoppers[shopIndex].name); // buyer name
           bought += shoppers[shopIndex].amount;
           productSales.leftOver = productSales.leftOver - shoppers[shopIndex].amount;
+          // bought += (shoppers[shopIndex].amount - productSales.leftOver);
+          // productSales.leftOver = 0;
+        } else {
+
         }
       }
     }
