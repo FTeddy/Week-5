@@ -2,7 +2,7 @@
 //
 
 function hapusSimbol(str) {
-  var output = str.replace(/[^\s\w]/g, '');
+  var output = str.replace(/[^\w]/g, '');
   return output;
 }
 
